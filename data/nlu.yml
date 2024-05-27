@@ -1,0 +1,500 @@
+# ==============================================================================
+# File: nlu.yml
+# Project Name: ForestBot
+# Version: 1
+# Copyright: Copyright 2024 by the developers of ForestBot
+# License: MIT License
+# 
+# Description: This NLU (Natural Language Understanding) configuration file contains the training data for
+# ForestBot's language model, part of the ForestQB project. It includes examples of user intents and phrases
+# that train the AI to recognize and process user requests accurately. This file is crucial for enabling
+# ForestBot to understand and classify user inputs correctly, thereby facilitating effective communication
+# and interaction between the chatbot and the GUI. The NLU model helps decode user intents and entities,
+# which are essential for generating appropriate JSON responses that ForestQB uses to trigger specific actions.
+# 
+# Disclaimer: This software is provided "as is" without warranty of any kind, either express or implied,
+# including but not limited to the implied warranties of merchantability, fitness for a particular purpose,
+# or non-infringement. The developers of ForestBot do not guarantee the software's performance
+# and are not liable for any issues that arise from its use.
+# ==============================================================================
+
+
+version: "3.1"
+
+nlu:
+
+- synonym: descending
+  examples: |
+    - now
+    - last
+    - latest
+    - newest
+    - most recent
+    - recent
+    - newest
+    - brand new
+    - fresh
+    - up to date
+    - current
+    - last time
+
+- synonym: ascending
+  examples: |
+    - earliest
+    - initail
+    - opening
+    - old
+    - oldest
+    - first
+    - first time
+
+- synonym: readings
+  examples: |
+    - measurements
+    - data
+    - values
+    - outputs
+    - indications
+    - metrics
+    - observations
+    - records
+    - figures
+    - quantities
+
+- intent: greet
+  examples: |
+    - good evening
+    - moin
+    - hey there
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - you ok?
+    - Hi
+    - Hey
+    - Hi bot
+    - Hey bot
+    - Hello
+    - Good morning
+    - hi again
+    - hi folks
+    - hi Mister
+    - hi pal!
+    - hi there
+    - greetings
+    - hello everybody
+    - hello is anybody there
+    - hello robot
+    - hallo
+    - heeey
+    - hi hi
+    - hey
+    - hey hey
+    - hello there
+    - hi
+    - hello
+    - yo
+    - hola
+    - hi?
+    - hey bot!
+    - hello friend
+
+- intent: show_examples
+  examples: |
+    - /show_examples
+    - show me example
+    - show examples
+    - help me
+    - I need help
+    - I need support
+    - what can I ask?
+    - what questions can I ask?
+    - I do not know what to ask
+    - list some examples
+    
+
+- intent: list_all_sensors
+  examples: |
+    - /list_all_sensors
+    - list available sensors
+    - list all animals
+    - give me all sensors
+    - what animals is avialable
+    - what can i query about
+    - show sensors
+    - show animals
+    - show data
+    - display sensors
+
+- intent: count_all_sensors
+  examples: |
+    - /count_all_sensors
+    - how many available sensors
+    - how much available sensors
+    - count available sensors
+    - count all animals
+    - count me all sensors
+    - how many animals are available
+    - how many sensors are available
+    - count what can i query about
+    - count sensors
+    - total sensors
+    - calculate sensors
+    - compute sensors
+    - add up animals
+    - total data
+    - add up sensors
+
+- intent: discover_sensors_within_location
+  examples: |
+    - /discover_sensors_within_location
+    - what is the sensors within selected location
+    - what are sensors within selected location
+    - what is the animals in this place
+    - find animal in the map
+    - find animal from the map filter
+    - what sensors within map filters
+    - what sensors within the circle
+    - find animals nearby the selected map
+    - what sensors in [area 1]{"entity": "area"}
+    - find animals nearby [area 2]{"entity": "area"}
+    - what are sensors within [area 3]{"entity": "area"}?
+    - what is the animals in [area 4]{"entity": "area"}
+    - what sensors in [area 3]{"entity": "area"}?
+    - what sensors in [area 3]{"entity": "area"} and [area 2]{"entity": "area"}
+    - what sensors within [area 1]{"entity": "area"}?
+    - what data within [area1]{"entity": "area"} , [area2]{"entity": "area"}
+    - can you show me the sensors in [area 3]{"entity": "area"}?
+    - what kind of sensors are located in [area 1]{"entity": "area"}
+    - can you tell me the types of animals found in [area 4]{"entity": "area"}?
+    - can you list the sensors within a specific radius of the selected location?
+    - can you filter the map to show only the animal species found in [area 2]{"entity": "area"}
+    - are there any specific types of sensors within [area 3]{"entity": "area"}?
+    - can you find the sensors in [area 1]{"entity": "area"} and display them on the map
+    - are there any animals in the vicinity of [area 4]{"entity": "area"}?
+    - can you filter the sensors based on the selected location on the map
+    - can you list the types of animals found in the vicinity of [area 2]{"entity": "area"}?
+    - can you show the sensors in the selected location?
+    - can you tell me the types of sensors within [area 3]{"entity": "area"} and [area 4]{"entity": "area"}
+    - can you display the data within [area 2]{"entity": "area"} and [area 3]{"entity": "area"} on the map?
+    - are there any sensors present in [area 1]{"entity": "area"}
+
+    
+
+- intent: list_observable_info
+  examples: |
+    - /list_observable_info
+    - what is [Dara]{"entity": "observable"}?
+    - what is [abaw]{"entity": "observable"}?
+    - who is [Kuma]{"entity": "observable"}
+    - give me info about [family]{"entity": "observable"}
+    - give me information about [Sandi]{"entity": "observable"}
+    - information about [domain]{"entity": "observable"}
+    - info about [lat]{"entity": "observable"}
+    - what is [Aqeela]{"entity": "observable"}?
+    - give me info about [Site name]{"entity": "observable"}
+    - give me information about [Type]{"entity": "observable"}
+    - information about [label]{"entity": "observable"}
+    - info about [long]{"entity": "observable"}
+
+# what when where why who
+- intent: construct_where_query
+  examples: |
+    - /construct_where_query
+    - where is [Aqeela]{"entity": "observable"}?
+    - where was [Abaw]{"entity": "observable"}?
+    - where is [Dara]{"entity": "observable"} between [11/12/2020]{"entity": "dateRange"} and [13/1/2021]{"entity": "dateRange"}
+    - where is [Aqeela]{"entity": "observable"} between [12/02/2022]{"entity": "dateRange"} and [12/02/2020]{"entity": "dateRange"}?
+    - where was [Dara]{"entity": "observable"} in [12/02/2022]{"entity": "dateRange"}?
+    - where was [Dara]{"entity": "observable"} during [12-02-2022]{"entity": "dateRange"}
+    - where was [Dara]{"entity": "observable"} during [2022-02-15]{"entity": "dateRange"}
+    - where is [Abaw]{"entity": "observable"} during last [three months]{"entity": "dateRange"}
+    - where is [Abaw]{"entity": "observable"} during last [3 months]{"entity": "dateRange"}
+    - where is [Aqeela]{"entity": "observable"} in [descending]{"entity": "order", "group": "descending"} order
+    - where was [Abaw]{"entity": "observable"} in [desc]{"entity": "order", "group": "descending"} order
+    - where is [Aqeela]{"entity": "observable"} in [ascending]{"entity": "order", "group": "ascending"} order
+    - where was [Abaw]{"entity": "observable"} in [asc]{"entity": "order", "group": "ascending"} order
+    - where is [Aqeela]{"entity": "observable"} [now]{"entity": "order", "group": "descending"}
+    - where was [Abaw]{"entity": "observable"} [lately]{"entity": "order", "group": "descending"}?
+    - where was last [3]{"entity": "limit"} readings for [Abaw]{"entity": "observable"}
+    - where was last [three]{"entity": "limit"} readings for [Abaw]{"entity": "observable"}
+    - where was last [three]{"entity": "limit"} readings for [Abaw]{"entity": "observable"}?
+    - where was lastest [Seri]{"entity": "observable"} info limit by [one hundred]{"entity": "limit"} result
+    - where was lastest [Seri]{"entity": "observable"} info limit by [100]{"entity": "limit"} result
+    - where was lastest [Seri]{"entity": "observable"} info limit = [1000]{"entity": "limit"} result
+    - where was lastest [Seri]{"entity": "observable"} info limit [250]{"entity": "limit"} result
+    - where was [Abaw]{"entity": "observable"} and [Aqeela]{"entity": "observable"}
+    - [Ita]{"entity": "observable"} [latest]{"entity": "order", "group": "descending"} update
+    - [Sandi]{"entity": "observable"} [current]{"entity": "order", "group": "descending"} location
+    - [Sandi]{"entity": "observable"} [current]{"entity": "order", "group": "descending"} location within [area 2]{"entity": "area"}
+    - where was last [three]{"entity": "limit"} readings for [Abaw]{"entity": "observable"} within [area 2]{"entity": "area"}
+    - where was [Abaw]{"entity": "observable"} in [area 2]{"entity": "area"}?
+    - where was last [3]{"entity": "limit"} readings for [Abaw]{"entity": "observable"} inside [area 2]{"entity": "area"}?
+    - where was last [ten]{"entity": "limit"} readings for [Abaw]{"entity": "observable"} located within [area 2]{"entity": "area"} map filter?
+    - where was lastest readings for [Abaw]{"entity": "observable"} located within [area 1]{"entity": "area"} and [area 2]{"entity": "area"} map filters?
+    - where is the recent readings for [Aqeela]{"entity": "observable"} within [area 1]{"entity": "area"} and [2]{"entity": "area"} filters
+    - what is the [latest]{"entity": "order", "group": "descending"} [aqeela]{"entity": "observable"}  readings in [area 1]{"entity": "area"} limit [10]{"entity": "limit"}?
+    - what is the [latest]{"entity": "order", "group": "descending"} [aqeela]{"entity": "observable"}  readings within [area 1]{"entity": "area"} limit [5]{"entity": "limit"}
+    - what is the [latest]{"entity": "order", "group": "descending"} [abaw]{"entity": "observable"} readings within [area 1]{"entity": "area"}
+    - where was [last]{"entity": "order", "group": "descending"} time we see [aqeela]{"entity": "observable"} and [abaw]{"entity": "observable"} search size [10]{"entity": "limit"}?
+    - what are the readings of [Aqeela]{"entity": "observable"} in [area 2]{"entity": "area"}
+    - what are the records of [Ita]{"entity": "observable"}?
+    - where is [Seri]{"entity": "observable"} currently?
+    - what is the [current]{"entity": "order", "group": "descending"} location of [Ita]{"entity": "observable"}?
+    - can you show me the location of [Dara]{"entity": "observable"} from [11/12/2022]{"entity": "dateRange"} to [13/1/2023]{"entity": "dateRange"}?
+    - where was [Aqeela]{"entity": "observable"} on [15/12/2022]{"entity": "dateRange"}?
+    - where was [Ita]{"entity": "observable"} located in [February 2022]{"entity": "dateRange"}?
+    - can you provide the location of [Seri]{"entity": "observable"} in the last [6 months]{"entity": "dateRange"}?
+    - where was [Dara]{"entity": "observable"} during the last [5 months]{"entity": "dateRange"}?
+    - can you give me the [ascending]{"entity": "order", "group": "ascending"} order of [Aqeela]{"entity": "observable"}'s readings?
+    - can you give me the [descending]{"entity": "order", "group": "descending"} order of [Abaw]{"entity": "observable"}'s readings?
+    - can you show me the [last]{"entity": "order", "group": "descending"} [10]{"entity": "limit"} readings of [Seri]{"entity": "observable"}?
+    - can you provide the [last]{"entity": "order", "group": "descending"} [20]{"entity": "limit"} readings of [Dara]{"entity": "observable"}?
+    - can you tell me where [Abaw]{"entity": "observable"} was in [area 1]{"entity": "area"}?
+    - can you show me the location of [Aqeela]{"entity": "observable"} within [area 2]{"entity": "area"}?
+    - can you give me the [last]{"entity": "order", "group": "descending"} [5]{"entity": "limit"} records of [Ita]{"entity": "observable"} in [area 2]{"entity": "area"}?
+    - can you provide the [latest]{"entity": "order", "group": "descending"} readings of [Seri]{"entity": "observable"} located in both [area 1]{"entity": "area"} and [area 2]{"entity": "area"}?
+    - can you show me [Sandi]{"entity": "observable"}'s [most recent]{"entity": "order", "group": "descending"} location in [area 2]{"entity": "area"}?
+    - can you tell me the [current]{"entity": "order", "group": "descending"} location of [Ita]{"entity": "observable"} within [area 1]{"entity": "area"}?
+    - can you give me the [last]{"entity": "order", "group": "descending"} [15]{"entity": "limit"} records for [Abaw]{"entity": "observable"} in [area 2]{"entity": "area"}?
+    - can you provide the [recent]{"entity": "order", "group": "descending"} readings for [Aqeela]{"entity": "observable"} within [area 1]{"entity": "area"}?
+    - what were the [first]{"entity": "order", "group": "ascending"} readings of [Dara]{"entity": "observable"} and [Jasper]{"entity": "observable"}?
+    - can you give me the [previous]{"entity": "order", "group": "descending"} readings for [aqeela]{"entity": "observable"} and [abaw]{"entity": "observable"}?
+    - can you give me the [latest]{"entity": "order", "group": "descending"} readings for [aqeela]{"entity": "observable"} within [area 1]{"entity": "area"}?
+
+
+
+
+
+- intent: construct_when_query
+  examples: |
+    - /construct_when_query
+    - when was the [first]{"entity": "order", "group": "ascending"} reading  of [Dara]{"entity": "observable"}
+    - when was the [first]{"entity": "order", "group": "ascending"} reading  of [Dara]{"entity": "observable"} and [Jasper]{"entity": "observable"}
+    - when was the [latest]{"entity": "order", "group": "descending"} reading  of [Abaw]{"entity": "observable"} 
+    - when is the [latest]{"entity": "order", "group": "descending"} [Abaw]{"entity": "observable"} reading
+    - what is the [latest]{"entity": "order", "group": "descending"} [16]{"entity": "limit"} reading for [aqeela]{"entity": "observable"}
+    - when was [last]{"entity": "order", "group": "descending"} [abaw]{"entity": "observable"} reading
+    - when was [last]{"entity": "order", "group": "descending"} [aqeela]{"entity": "observable"} and [abaw]{"entity": "observable"} readings
+    - what is the [latest]{"entity": "order", "group": "descending"} [aqeela]{"entity": "observable"} reading within [area 1]{"entity": "area"} limit [5]{"entity": "limit"}
+    - when was [last]{"entity": "order", "group": "descending"} time we see [aqeela]{"entity": "observable"} and [abaw]{"entity": "observable"}
+    - what was the [earliest]{"entity": "order", "group": "ascending"} reading of [Dara]{"entity": "observable"}?
+    - what was the [earliest]{"entity": "order", "group": "ascending"} reading of [Dara]{"entity": "observable"} and [Jasper]{"entity": "observable"}?
+    - when was the [most recent]{"entity": "order", "group": "descending"} reading of [Abaw]{"entity": "observable"}?
+    - what is the [most recent]{"entity": "order", "group": "descending"} reading of [Abaw]{"entity": "observable"}?
+    - can you provide the [most recent]{"entity": "order", "group": "descending"} [16]{"entity": "limit"} readings for [aqeela]{"entity": "observable"}?
+    - what was the [last]{"entity": "order", "group": "descending"} reading of [abaw]{"entity": "observable"}?
+    - can you give me the [latest]{"entity": "order", "group": "descending"} reading of [aqeela]{"entity": "observable"} and [abaw]{"entity": "observable"}?
+    - can you give me the [most recent]{"entity": "order", "group": "descending"} [5]{"entity": "limit"} readings for [aqeela]{"entity": "observable"} within [area 1]{"entity": "area"}?
+    - can you tell me the [last]{"entity": "order", "group": "descending"} time we saw [aqeela]{"entity": "observable"} and [abaw]{"entity": "observable"}?
+    - when was the [first]{"entity": "order", "group": "ascending"} recorded reading of [Dara]{"entity": "observable"}?
+    - can you provide the [latest]{"entity": "order", "group": "descending"} reading of [Abaw]{"entity": "observable"}?
+    - can you provide the [most recent]{"entity": "order", "group": "descending"} readings for [aqeela]{"entity": "observable"}?
+    - what was the [previous]{"entity": "order", "group": "descending"} reading of [abaw]{"entity": "observable"}?
+    - can you tell me the [last]{"entity": "order", "group": "descending"} recorded observations of [aqeela]{"entity": "observable"} and [abaw]{"entity": "observable"}?
+
+
+
+
+
+
+
+
+
+
+
+- intent: thankyou
+  examples: |
+    - um thank you
+    - okay cool uh thank you
+    - okay thank you
+    - you rock
+    - and thats all thank you
+    - sorry about my mistakes thank you
+    - noise thank you
+    - thank you goodbye noise
+    - okay thank you goodbye
+    - uh thank you good bye
+    - breath thank you
+    - thank you
+    - okay thank you
+    - ah thank you
+    - thank you noise
+    - breath thank you very much
+    - thanks
+    - noise thank you
+
+
+- intent: thankyou_goodbye
+  examples: |
+    - noise thank you goodbye
+    - unintelligible thank you goodbye
+    - uh okay thank you good bye
+    - thank you bye
+    - um okay thank you good bye
+    - thanks goodbye
+    - um thank you good bye
+    - okay cool uh good bye thank you
+    - okay thank you good bye
+    - and thats all thank you and good bye
+    - thank you and good bye
+    - sorry about my mistakes thank you good bye
+    - noise thank you good bye
+    - thank you goodbye
+    - thank you goodbye noise thank you goodbye
+    - breath thank you goodbye
+    - ah thank you goodbye
+    - thank you good bye
+    - breath thank you very much goodbye
+
+
+
+
+
+
+- intent: goodbye
+  examples: |
+    - cu
+    - c u
+    - good by
+    - cee you later
+    - see ya kater
+    - see ya
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - ciao
+    - talk to you later
+    - have a good one
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - ye
+    - uh yes
+    - let's do it
+    - yeah
+    - uh yes
+    - um yes
+    - yes knocking
+    - that's correct
+    - yes yes
+    - right
+    - yea
+    - yes right
+    - yes and i dont care
+    - right on
+    - i love that
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no thanks
+    - no thank you
+    - uh no
+    - breath no
+
+- intent: mood_great
+  examples: |
+    - thanks
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - what are you?
+
+- lookup: observable
+  examples: |
+    - Liun
+    - Abaw
+    - Aqeela
+    - Bikang1
+    - Bikang2
+    - Dara
+    - Guli
+    - Ita
+    - Jasmin
+    - Jasper
+    - Kasih
+    - Kuma
+    - Maliau
+    - Merotai
+    - Puteri
+    - Putut
+    - Sandi
+    - Sejati
+    - Tulid
+    - Seri
+    - Tunglap
+    - Umas2
+    - Juling
+
+
+- lookup: area
+  examples: |
+    - area 1
+    - area1
+    - area 2
+    - area2
+    - area 3
+    - area3
+    - area 4
+    - area4
+    - area 5
+    - area5
+    - area 6
+    - area6
+    - area 7
+    - area7
+    - area 8
+    - area8

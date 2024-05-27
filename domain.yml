@@ -1,0 +1,143 @@
+# ==============================================================================
+# File: domain.yml
+# Project Name: ForestBot
+# Version: 1
+# Copyright: Copyright 2024 by Omar Mussa
+# License: MIT License
+# 
+# Description: This domain file defines the conversational abilities of ForestBot, part of the ForestQB project.
+# It specifies the intents, entities, slots, and actions that ForestBot can recognize and execute. This setup
+# enables the chatbot to interact effectively with users, processing and pushing JSON outputs that include
+# intent and entity data back to ForestQB. ForestQB then processes these outputs to perform appropriate
+# actions and reflect these on the GUI. This system enhances the chatbot's capability to manage and streamline
+# interactions, ensuring efficient and accurate data handling and user experience enhancement.
+# 
+# Disclaimer: This software is provided "as is" without warranty of any kind, either express or implied,
+# including but not limited to the implied warranties of merchantability, fitness for a particular purpose,
+# or non-infringement. The developers of ForestBot do not guarantee the software's performance and are
+# not liable for any issues that arise from its use.
+# ==============================================================================
+
+version: "3.1"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- show_examples
+- list_all_sensors
+- count_all_sensors
+- list_observable_info
+- discover_sensors_within_location
+- construct_where_query
+- construct_when_query
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- thankyou
+- thankyou_goodbye
+
+entities:
+- observable
+- time
+- limit
+- dateRange
+- area
+- order:            
+    groups:
+    - descending
+    - ascending
+- PERSON
+- ORG
+- PRODUCT
+- DATE
+- TIME
+- QUANTITY
+- CARDINAL
+
+
+slots:
+  observable:
+    type: any
+    mappings:
+    - type: custom
+  area:
+    type: text
+    mappings:
+    - type: custom
+  time:
+    type: any
+    mappings:
+    - type: custom
+  limit:
+    type: any
+    mappings:
+    - type: custom
+  dateRange:
+    type: any
+    mappings:
+    - type: custom
+
+responses:
+  utter_greet:
+  - text: Hey! How are you? Please ask me questions about the data or type help.
+  - text: Hey. How is your day going? Please ask me questions about the data or type help.
+  - text: Hello! I'm here to help with your questions about the data. How can I assist you today?
+  - text: there! It's great to see you. Is there anything specific you'd like to know about the data?
+  - text: Good day! How can I assist you with information about the data?
+  - text: Hey! I'm here to answer your questions about the data. What information are you looking for?
+  - text: Hello, I'm here to provide information about the data. What questions do you have for me?
+  - text: Hi! It's great to hear from you. How can I help with your questions about the data?
+  - text: Hello and welcome! I'm here to answer any questions you have about the data. How can I help today?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  - text: Great, glad I can help.
+  utter_thankyou:
+  - text: You're welcome! Is there anything else I can help with?
+  - text: No problem, happy to assist.
+  - text: Don't mention it. Let me know if there's anything else I can do for you.
+  - text: My pleasure. Is there anything else I can help with?
+  - text: No worries. If you need anything else, don't hesitate to ask.
+  - text: Of course! It was my pleasure assisting you.
+  - text: It was nothing. Let me know if there's anything else I can help with.
+  - text: Sure thing! It was a pleasure assisting you.
+  - text: Anytime. Let me know if there's anything else I can do for you.
+  - text: Not a problem. It was my pleasure assisting you.
+  - text: No problem at all. Let me know if there's anything else I can help with.
+  - text: My pleasure! Let me know if there's anything else I can assist with.
+  - text: You're welcome. Let me know if there's anything else I can do for you.
+  - text: It was my pleasure. If you need anything else, just let me know.
+  - text: Of course! If there's anything else I need to help with, just ask.
+
+  utter_thankyou_goodbye:
+  - text: It was my pleasure. Hope to see you again soon.
+  - text: You're welcome! Have a great day!
+  - text: It was nothing. Don't hesitate to reach out if you need anything.
+
+
+  utter_goodbye:
+  - text: It was great chatting with you! Have a great day!
+  - text: Goodbye! Come back soon if you have more questions.
+  - text: Farewell! If you need anything else, just let me know.
+  - text: Goodbye for now! Take care.
+  - text: It was a pleasure assisting you. Have a great day ahead.
+  - text: Goodbye! Hope to see you again soon.
+  - text: Farewell! Don't hesitate to reach out if you need anything.
+  - text: Take care! Have a great rest of your day.
+  - text: Goodbye! Have a fantastic day.
+  - text: It was nice talking to you. Have a great one!
+  utter_iamabot:
+  - text: I am the ForestBot, an assistant to help you in accessing the forest Linked-Data store.
+  - text: I am the ForestBot, a friendly chatbot to help you in access the data.
+
+actions:
+- action_main_handler

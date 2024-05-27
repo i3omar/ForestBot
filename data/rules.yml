@@ -1,0 +1,89 @@
+# ==============================================================================
+# File: rules.yml
+# Project Name: ForestBot
+# Version: 1
+# Copyright: Copyright 2024 by Omar Mussa
+# License: MIT License
+# 
+# Description: This rules file outlines specific behavioral rules for ForestBot within the ForestQB project,
+# ensuring that the chatbot responds predictably in predefined scenarios. These rules are crafted to complement
+# the AI's dynamic decision-making process, facilitating a seamless integration with the ForestQB system for
+# pushing back JSON outputs that include intent and entity data. The execution of these rules ensures that
+# ForestBot operates consistently and efficiently, enhancing user interaction and supporting accurate data
+# management through the GUI.
+# 
+# Disclaimer: This software is provided "as is" without warranty of any kind, either express or implied,
+# including but not limited to the implied warranties of merchantability, fitness for a particular purpose,
+# or non-infringement. The developers of ForestBot do not guarantee the software's performance and are
+# not liable for any issues that arise from its use.
+# ==============================================================================
+
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say thankyou anytime the user says thankyou
+  steps:
+  - intent: thankyou
+  - action: utter_thankyou
+
+- rule: Say thankyou anytime the user says thankyou and goodbye
+  steps:
+  - intent: thankyou_goodbye
+  - action: utter_thankyou_goodbye
+
+- rule: Greet anytime the user says hi
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say 'I am a bot by Omar' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: user say thanks or feel happy
+  steps:
+  - intent: mood_great
+  - action: utter_happy
+
+- rule: List all sensors 
+  steps:
+  - intent: list_all_sensors
+  - action: action_main_handler
+
+- rule: Count all sensors 
+  steps:
+  - intent: count_all_sensors
+  - action: action_main_handler
+
+- rule: list observable info
+  steps:
+  - intent: list_observable_info
+  - action: action_main_handler 
+
+- rule: discover sensors within location
+  steps:
+  - intent: discover_sensors_within_location
+  - action: action_main_handler 
+
+- rule: construct where query
+  steps:
+  - intent: construct_where_query
+  - action: action_main_handler
+
+- rule: construct when query
+  steps:
+  - intent: construct_when_query
+  - action: action_main_handler
+
+- rule: show examples
+  steps:
+  - intent: show_examples
+  - action: action_main_handler
+

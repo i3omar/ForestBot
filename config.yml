@@ -1,0 +1,76 @@
+# ==============================================================================
+# Project Name: ForestBot
+# Version: 1
+# Copyright: Copyright 2024 by Omar Mussa
+# License: MIT License
+# 
+# Description: This configuration file (version 1) sets up ForestBot, an advanced chatbot component
+# of the ForestQB project. ForestBot integrates a user-friendly chatbot interface with a graphical
+# user interface (GUI), enhancing user interactions and streamlining the data extraction process.
+# The integration supports efficient management and extraction of data, improving analytical capabilities.
+# This setup enables the chatbot's AI to handle a diverse range of user inquiries effectively within
+# the scope of the ForestQB project.
+# 
+# Disclaimer: This software is provided "as is" without warranty of any kind, either express or implied,
+# including but not limited to the implied warranties of merchantability, fitness for a particular purpose,
+# or non-infringement. The developers of ForestBot do not guarantee the software's performance and is not
+# liable for any issues that arise from its use.
+# ==============================================================================
+
+
+# Pipeline configuration for Rasa NLU
+  language: en
+
+  pipeline:
+  # Initializes spaCy structures.
+  - name: SpacyNLP
+    # language model to load
+    model: "en_core_web_md"
+  #Initializes MITIE structures.
+  - name: "MitieNLP"
+    model: "external_data/MITIE-models/english/total_word_feature_extractor.dat"
+
+  - name: SpacyTokenizer
+  - name: "SpacyEntityExtractor"
+    dimensions: ["PERSON", "LOC", "ORG", "PRODUCT","DATE","TIME","QUANTITY", "CARDINAL"]
+
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+
+  - name: "MitieEntityExtractor"
+
+  - name: CRFEntityExtractor
+  - name: RegexEntityExtractor
+  # text will be processed with case insensitive as default
+    case_sensitive: False
+  # use lookup tables to extract entities
+    use_lookup_tables: True
+  # use regexes to extract entities
+    use_regexes: True
+  # use match word boundaries for lookup table
+    "use_word_boundaries": True
+
+  # classifiers
+  - name: "MitieIntentClassifier"
+
+  - name: "DucklingEntityExtractor"
+    # url of the running duckling server
+    url: "http://localhost:8000"
+    # dimensions to extract
+    dimensions: ["time", "Duration", "number", "Temperature", "distance", "Volume"]
+    timeout : 3
+
+  - name: EntitySynonymMapper
+
+  policies:
+  - name: MemoizationPolicy
+    max_history: 5
+
+#     epochs: 100
+  - name: RulePolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
+

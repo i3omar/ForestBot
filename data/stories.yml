@@ -1,0 +1,49 @@
+version: "3.1"
+
+stories:
+
+- story: direct path 1
+  steps:
+  - intent: list_all_sensors
+  - action: action_main_handler
+
+- story: direct path 2
+  steps:
+  - intent: count_all_sensors
+  - action: action_main_handler
+
+- story: direct path 3
+  steps:
+  - intent: count_all_sensors
+  - action: action_main_handler
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+
+- story: happy path with thank you
+  steps:
+  - intent: thankyou
+  - action: utter_thankyou
+  - intent: deny
+  - action: utter_goodbye
